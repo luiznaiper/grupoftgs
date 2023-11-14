@@ -1,138 +1,161 @@
 /**
-* Template Name: UpConstruction
-* Updated: Sep 18 2023 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/upconstruction-bootstrap-construction-website-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+ * Template Name: UpConstruction
+ * Updated: Sep 18 2023 with Bootstrap v5.3.2
+ * Template URL: https://bootstrapmade.com/upconstruction-bootstrap-construction-website-template/
+ * Author: BootstrapMade.com
+ * License: https://bootstrapmade.com/license/
+ */
 document.addEventListener('DOMContentLoaded', () => {
-  "use strict";
+  'use strict'
 
   /**
    * Preloader
    */
-  const preloader = document.querySelector('#preloader');
+  const preloader = document.querySelector('#preloader')
   if (preloader) {
     window.addEventListener('load', () => {
-      preloader.remove();
-    });
+      preloader.remove()
+    })
   }
 
   /**
    * Mobile nav toggle
    */
 
-  const mobileNavShow = document.querySelector('.mobile-nav-show');
-  const mobileNavHide = document.querySelector('.mobile-nav-hide');
+  const mobileNavShow = document.querySelector('.mobile-nav-show')
+  const mobileNavHide = document.querySelector('.mobile-nav-hide')
 
-  document.querySelectorAll('.mobile-nav-toggle').forEach(el => {
-    el.addEventListener('click', function(event) {
-      event.preventDefault();
-      mobileNavToogle();
+  document.querySelectorAll('.mobile-nav-toggle').forEach((el) => {
+    el.addEventListener('click', function (event) {
+      event.preventDefault()
+      mobileNavToogle()
     })
-  });
+  })
 
   function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavShow.classList.toggle('d-none');
-    mobileNavHide.classList.toggle('d-none');
+    document.querySelector('body').classList.toggle('mobile-nav-active')
+    mobileNavShow.classList.toggle('d-none')
+    mobileNavHide.classList.toggle('d-none')
   }
 
   /**
    * Hide mobile nav on same-page/hash links
    */
-  document.querySelectorAll('#navbar a').forEach(navbarlink => {
+  document.querySelectorAll('#navbar a').forEach((navbarlink) => {
+    if (!navbarlink.hash) return
 
-    if (!navbarlink.hash) return;
-
-    let section = document.querySelector(navbarlink.hash);
-    if (!section) return;
+    let section = document.querySelector(navbarlink.hash)
+    if (!section) return
 
     navbarlink.addEventListener('click', () => {
       if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
+        mobileNavToogle()
       }
-    });
-
-  });
+    })
+  })
 
   /**
    * Toggle mobile nav dropdowns
    */
-  const navDropdowns = document.querySelectorAll('.navbar .dropdown > a');
+  const navDropdowns = document.querySelectorAll('.navbar .dropdown > a')
 
-  navDropdowns.forEach(el => {
-    el.addEventListener('click', function(event) {
+  navDropdowns.forEach((el) => {
+    el.addEventListener('click', function (event) {
       if (document.querySelector('.mobile-nav-active')) {
-        event.preventDefault();
-        this.classList.toggle('active');
-        this.nextElementSibling.classList.toggle('dropdown-active');
+        event.preventDefault()
+        this.classList.toggle('active')
+        this.nextElementSibling.classList.toggle('dropdown-active')
 
-        let dropDownIndicator = this.querySelector('.dropdown-indicator');
-        dropDownIndicator.classList.toggle('bi-chevron-up');
-        dropDownIndicator.classList.toggle('bi-chevron-down');
+        let dropDownIndicator = this.querySelector('.dropdown-indicator')
+        dropDownIndicator.classList.toggle('bi-chevron-up')
+        dropDownIndicator.classList.toggle('bi-chevron-down')
       }
     })
-  });
+  })
 
   /**
    * Scroll top button
    */
-  const scrollTop = document.querySelector('.scroll-top');
+  const scrollTop = document.querySelector('.scroll-top')
   if (scrollTop) {
-    const togglescrollTop = function() {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+    const togglescrollTop = function () {
+      window.scrollY > 100
+        ? scrollTop.classList.add('active')
+        : scrollTop.classList.remove('active')
     }
-    window.addEventListener('load', togglescrollTop);
-    document.addEventListener('scroll', togglescrollTop);
-    scrollTop.addEventListener('click', window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    }));
+    window.addEventListener('load', togglescrollTop)
+    document.addEventListener('scroll', togglescrollTop)
+    scrollTop.addEventListener(
+      'click',
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+    )
   }
 
   /**
    * Initiate glightbox
    */
   const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+    selector: '.glightbox',
+  })
 
   /**
    * Porfolio isotope and filter
    */
-  let portfolionIsotope = document.querySelector('.portfolio-isotope');
+  let portfolionIsotope = document.querySelector('.portfolio-isotope')
 
   if (portfolionIsotope) {
-
-    let portfolioFilter = portfolionIsotope.getAttribute('data-portfolio-filter') ? portfolionIsotope.getAttribute('data-portfolio-filter') : '*';
-    let portfolioLayout = portfolionIsotope.getAttribute('data-portfolio-layout') ? portfolionIsotope.getAttribute('data-portfolio-layout') : 'masonry';
-    let portfolioSort = portfolionIsotope.getAttribute('data-portfolio-sort') ? portfolionIsotope.getAttribute('data-portfolio-sort') : 'original-order';
+    let portfolioFilter = portfolionIsotope.getAttribute(
+      'data-portfolio-filter'
+    )
+      ? portfolionIsotope.getAttribute('data-portfolio-filter')
+      : '*'
+    let portfolioLayout = portfolionIsotope.getAttribute(
+      'data-portfolio-layout'
+    )
+      ? portfolionIsotope.getAttribute('data-portfolio-layout')
+      : 'masonry'
+    let portfolioSort = portfolionIsotope.getAttribute('data-portfolio-sort')
+      ? portfolionIsotope.getAttribute('data-portfolio-sort')
+      : 'original-order'
 
     window.addEventListener('load', () => {
-      let portfolioIsotope = new Isotope(document.querySelector('.portfolio-container'), {
-        itemSelector: '.portfolio-item',
-        layoutMode: portfolioLayout,
-        filter: portfolioFilter,
-        sortBy: portfolioSort
-      });
+      let portfolioIsotope = new Isotope(
+        document.querySelector('.portfolio-container'),
+        {
+          itemSelector: '.portfolio-item',
+          layoutMode: portfolioLayout,
+          filter: portfolioFilter,
+          sortBy: portfolioSort,
+        }
+      )
 
-      let menuFilters = document.querySelectorAll('.portfolio-isotope .portfolio-flters li');
-      menuFilters.forEach(function(el) {
-        el.addEventListener('click', function() {
-          document.querySelector('.portfolio-isotope .portfolio-flters .filter-active').classList.remove('filter-active');
-          this.classList.add('filter-active');
-          portfolioIsotope.arrange({
-            filter: this.getAttribute('data-filter')
-          });
-          if (typeof aos_init === 'function') {
-            aos_init();
-          }
-        }, false);
-      });
-
-    });
-
+      let menuFilters = document.querySelectorAll(
+        '.portfolio-isotope .portfolio-flters li'
+      )
+      menuFilters.forEach(function (el) {
+        el.addEventListener(
+          'click',
+          function () {
+            document
+              .querySelector(
+                '.portfolio-isotope .portfolio-flters .filter-active'
+              )
+              .classList.remove('filter-active')
+            this.classList.add('filter-active')
+            portfolioIsotope.arrange({
+              filter: this.getAttribute('data-filter'),
+            })
+            if (typeof aos_init === 'function') {
+              aos_init()
+            }
+          },
+          false
+        )
+      })
+    })
   }
 
   /**
@@ -143,19 +166,19 @@ document.addEventListener('DOMContentLoaded', () => {
     loop: true,
     autoplay: {
       delay: 5000,
-      disableOnInteraction: false
+      disableOnInteraction: false,
     },
     slidesPerView: 'auto',
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
-      clickable: true
+      clickable: true,
     },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
-    }
-  });
+    },
+  })
 
   /**
    * Init swiper slider with 2 slides at once in desktop view
@@ -165,13 +188,13 @@ document.addEventListener('DOMContentLoaded', () => {
     loop: true,
     autoplay: {
       delay: 5000,
-      disableOnInteraction: false
+      disableOnInteraction: false,
     },
     slidesPerView: 'auto',
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
-      clickable: true
+      clickable: true,
     },
     navigation: {
       nextEl: '.swiper-button-next',
@@ -180,20 +203,20 @@ document.addEventListener('DOMContentLoaded', () => {
     breakpoints: {
       320: {
         slidesPerView: 1,
-        spaceBetween: 20
+        spaceBetween: 20,
       },
 
       1200: {
         slidesPerView: 2,
-        spaceBetween: 20
-      }
-    }
-  });
+        spaceBetween: 20,
+      },
+    },
+  })
 
   /**
    * Initiate pURE cOUNTER
    */
-  new PureCounter();
+  new PureCounter()
 
   /**
    * Animation on scroll function and init
@@ -203,11 +226,42 @@ document.addEventListener('DOMContentLoaded', () => {
       duration: 800,
       easing: 'slide',
       once: true,
-      mirror: false
-    });
+      mirror: false,
+    })
   }
   window.addEventListener('load', () => {
-    aos_init();
-  });
+    aos_init()
+  })
+})
 
-});
+/**
+ * Inicializar Swiper para la sección de clientes
+ */
+new Swiper('.clientes-swiper', {
+  speed: 600,
+  loop: true,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+  slidesPerView: 'auto',
+  spaceBetween: 30,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 20,
+    },
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 30,
+    },
+    992: {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+  },
+})

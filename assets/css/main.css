@@ -2682,3 +2682,26 @@ section {
 .footer .footer-legal .credits a {
   color: var(--color-primary);
 }
+
+#clientes .section-header {
+  padding-bottom: 0;
+}
+
+.swiper-wrapper {
+  padding: 40px 0;
+}
+
+.swiper-slide .img-fluid {
+  max-width: 50% !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--color-primary);
+}
+
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  bottom: -6px;
+}

@@ -708,6 +708,15 @@ section {
 /*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
+
+#services {
+  background-color: #222428;
+}
+
+#services .services-dist {
+  color: #fff;
+}
+
 .services .service-item {
   padding: 40px;
   background: #fff;

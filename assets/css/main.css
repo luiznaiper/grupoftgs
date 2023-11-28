@@ -536,13 +536,22 @@ section {
 /*--------------------------------------------------------------
 # Get Started Section
 --------------------------------------------------------------*/
+#get-started {
+  background-color: #222428;
+  color: #fff;
+}
+
 .get-started .content {
   padding: 30px 0;
 }
 
+.get-started .form-quote {
+  color: var(--color-default);
+}
+
 .get-started .content h3 {
   font-size: 36px;
-  color: var(--color-secondary);
+  color: #fff;
   font-weight: 600;
   margin-bottom: 25px;
   padding-bottom: 25px;
@@ -877,6 +886,14 @@ section {
 /*--------------------------------------------------------------
 # Our Projects Section
 --------------------------------------------------------------*/
+#projects {
+  background-color: #222428;
+  color: #fff;
+}
+.projects .section-header h2 {
+  color: #fff;
+}
+
 .projects .portfolio-flters {
   padding: 0;
   margin: 0 auto 20px auto;
